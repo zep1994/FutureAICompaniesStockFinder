@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\artis\\Development\\aiLocation\\WebScraperAPI\\WebScraperAPI.csproj": {}
+    "D:\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\artis\\Development\\aiLocation\\WebScraperAPI\\WebScraperAPI.csproj": {
+    "D:\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\artis\\Development\\aiLocation\\WebScraperAPI\\WebScraperAPI.csproj",
+        "projectUniqueName": "D:\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj",
         "projectName": "WebScraperAPI",
-        "projectPath": "C:\\Users\\artis\\Development\\aiLocation\\WebScraperAPI\\WebScraperAPI.csproj",
-        "packagesPath": "C:\\Users\\artis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\artis\\Development\\aiLocation\\WebScraperAPI\\obj\\",
+        "projectPath": "D:\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj",
+        "packagesPath": "C:\\Users\\thoma\\.nuget\\packages\\",
+        "outputPath": "D:\\source\\repos\\FutureAICompaniesStockFinder\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\artis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\thoma\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -54,6 +54,10 @@
             "Hangfire.AspNetCore": {
               "target": "Package",
               "version": "[1.8.18, )"
+            },
+            "Hangfire.PostgreSql": {
+              "target": "Package",
+              "version": "[1.20.10, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -101,7 +105,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "J/MmIL4wwjUNitZka2fTPR+ynO979uTHOUQ/yYIoGyQ=",
+  "Source": "WebScraperAPI",
+  "BasePath": "_content/WebScraperAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

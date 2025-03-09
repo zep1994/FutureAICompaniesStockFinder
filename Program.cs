@@ -1,49 +1,49 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.SignalR;
 using Hangfire;
+using Hangfire.PostgreSql;
+using Microsoft.Extensions.DependencyInjection;
+using WebScraperAPI.Data;
+using WebScraperAPI.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// // Configure Serilog for logging
-// Log.Logger = new LoggerConfiguration()
-//     .WriteTo.Console()
-//     .WriteTo.File("logs/app.log", rollingInterval: RollingInterval.Day)
-//     .CreateLogger();
+// Configure Serilog for logging
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("logs/app.log", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
-// Add SignalR for real-time notifications
-builder.Services.AddSignalR();
+builder.Host.UseSerilog();
 
-// // Register services
-// builder.Services.AddScoped<ScraperJobService>();
+// PostgreSQL Connection String
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Add controllers
+// Add Database Context
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
+// ✅ Add Hangfire Services
+builder.Services.AddHangfire(config =>
+    config.UsePostgreSqlStorage(connectionString));
+builder.Services.AddHangfireServer();
+
+// Register Services
+builder.Services.AddScoped<ScraperService>();
+
+// Add Controllers
 builder.Services.AddControllers();
-
-// Enable CORS (if API is used by frontend apps)
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        policy => policy.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader());
-});
 
 var app = builder.Build();
 
-// Middleware pipeline
+// ✅ Ensure Hangfire is properly used AFTER adding services
 app.UseRouting();
-app.UseCors("AllowAll");
 app.UseAuthorization();
-app.UseHangfireDashboard();
+app.UseHangfireDashboard();  // <- This must be after Hangfire is added
 
-// // Exception Handling Middleware
-// app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
-
-// // Map API endpoints
-// app.UseEndpoints(endpoints =>
-// {
-//     endpoints.MapControllers();
-//     endpoints.MapHub<NotificationHub>("/notifications");
-// });
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();
