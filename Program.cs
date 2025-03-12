@@ -23,10 +23,13 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-// ✅ Add Hangfire Services
 builder.Services.AddHangfire(config =>
-    config.UsePostgreSqlStorage(connectionString));
-builder.Services.AddHangfireServer();
+    config.UsePostgreSqlStorage(options => 
+    {
+        options.UseNpgsqlConnection(connectionString);
+    })
+);
+
 
 // Register Services
 builder.Services.AddScoped<ScraperService>();
@@ -36,14 +39,11 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// ✅ Ensure Hangfire is properly used AFTER adding services
 app.UseRouting();
 app.UseAuthorization();
-app.UseHangfireDashboard();  // <- This must be after Hangfire is added
+app.UseHangfireDashboard();  
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
+app.MapControllers();
+
 
 app.Run();

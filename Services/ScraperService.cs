@@ -31,20 +31,27 @@ namespace WebScraperAPI.Services
 
                 using (Process process = Process.Start(start))
                 {
-                    string output = process.StandardOutput.ReadToEnd();
-                    string error = process.StandardError.ReadToEnd();
+                    if (process == null)
+                    {
+                        _logger.LogError("❌ Failed to start Python process.");
+                        return;
+                    }
+
+                    string output = process.StandardOutput?.ReadToEnd() ?? "";
+                    string error = process.StandardError?.ReadToEnd() ?? "";
+
                     process.WaitForExit();
 
                     if (!string.IsNullOrEmpty(output))
-                        _logger.LogInformation($"Python Scraper Output: {output}");
+                        _logger.LogInformation($"✅ Python Scraper Output: {output}");
 
                     if (!string.IsNullOrEmpty(error))
-                        _logger.LogError($"Python Scraper Error: {error}");
+                        _logger.LogError($"❌ Python Scraper Error: {error}");
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error running Python scraper: {ex.Message}");
+                _logger.LogError($"❌ Error running Python scraper: {ex.Message}");
             }
         }
     }

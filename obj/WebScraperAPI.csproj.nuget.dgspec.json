@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj": {}
+    "C:\\Users\\thoma\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj": {}
   },
   "projects": {
-    "D:\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj": {
+    "C:\\Users\\thoma\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj",
+        "projectUniqueName": "C:\\Users\\thoma\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj",
         "projectName": "WebScraperAPI",
-        "projectPath": "D:\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj",
+        "projectPath": "C:\\Users\\thoma\\source\\repos\\FutureAICompaniesStockFinder\\WebScraperAPI.csproj",
         "packagesPath": "C:\\Users\\thoma\\.nuget\\packages\\",
-        "outputPath": "D:\\source\\repos\\FutureAICompaniesStockFinder\\obj\\",
+        "outputPath": "C:\\Users\\thoma\\source\\repos\\FutureAICompaniesStockFinder\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\thoma\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\thoma\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -84,6 +77,18 @@
             "SendGrid": {
               "target": "Package",
               "version": "[9.29.3, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
@@ -105,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

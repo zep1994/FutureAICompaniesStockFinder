@@ -1,0 +1,39 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: webscraper-api
+    ports:
+      - "5000:80"  # Map API port to host
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=webscraperdb;Username=postgres;Password=yourpassword
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend  
+      dockerfile: Dockerfile
+    container_name: react-client
+    ports:
+      - "3000:80"  
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:17
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_DB: webscraperdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 6972
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
