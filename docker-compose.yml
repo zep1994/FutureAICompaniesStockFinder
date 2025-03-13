@@ -7,8 +7,8 @@ services:
     ports:
       - "5000:80"  # Map API port to host
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=webscraperdb;Username=postgres;Password=yourpassword
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=webscraperdb;Username=postgres;Password=${POSTGRES_PASSWORD}"
     depends_on:
       - db
 
@@ -29,7 +29,7 @@ services:
     environment:
       POSTGRES_DB: webscraperdb
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 6972
+      POSTGRES_PASSWORD: $(POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
